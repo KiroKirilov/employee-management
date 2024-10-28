@@ -1,0 +1,23 @@
+version: '3.4'
+
+services:
+  employee-management:
+    image: ${DOCKER_REGISTRY-}employeemanagement
+    container_name: EmployeeManagement.Api
+    build:
+      context: .
+      dockerfile: src/EmployeeManagement/Dockerfile
+    depends_on:
+      - employee-management-db
+  
+  employee-management-db:
+    image: postgres:latest
+    container_name: EmployeeManagement.Db
+    environment:
+      POSTGRES_DB: employee-management
+      POSTGRES_USER: employee-management
+      POSTGRES_PASSWORD: employee-management
+    volumes:
+      - ./.containers/database:/var/lib/postresql/data
+    ports:
+      - "5344:5432" 
