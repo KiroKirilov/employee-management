@@ -41,7 +41,6 @@ internal sealed class UpsertEmployeeCommandHandler(IEmployeeRepository employeeR
             !await _employeeRepository.Exists(managerId.Value, connection, ct))
         {
             return Result.Failure(EmployeeErrors.NotFound);
-            throw new InvalidOperationException("Manager does not exist.");
         }
 
         var employee = new Employee(
