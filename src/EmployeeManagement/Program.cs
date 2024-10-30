@@ -25,3 +25,6 @@ var apiGroup = app.MapGroup("api");
 apiGroup.MapEmployeeEndpoints();
 
 app.Run();
+
+// Needed for tests
+public partial class Program;
