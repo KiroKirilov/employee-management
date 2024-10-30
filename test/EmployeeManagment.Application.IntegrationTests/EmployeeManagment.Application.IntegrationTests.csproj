@@ -6,20 +6,6 @@
     <Nullable>enable</Nullable>
   </PropertyGroup>
 
-  <ItemGroup>
-    <None Remove="Employees\employee-data.sql" />
-    <None Remove="Employees\employee-schema.sql" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <Content Include="Employees\employee-schema.sql">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Employees\employee-data.sql">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-  </ItemGroup>
-
 	<ItemGroup>
 		<PackageReference Include="FluentAssertions" Version="6.12.1" />
 		<PackageReference Include="Microsoft.NET.Test.Sdk" Version="17.11.1" />

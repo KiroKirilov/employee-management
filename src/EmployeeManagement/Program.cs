@@ -13,6 +13,13 @@ builder.Services.AddPresentation()
 
 var app = builder.Build();
 
+app.CreateDbSchema();
+
+if (app.Environment.IsDevelopment())
+{
+    app.SeedData();
+}
+
 app.UseSwagger();
 app.UseSwaggerUI();
 

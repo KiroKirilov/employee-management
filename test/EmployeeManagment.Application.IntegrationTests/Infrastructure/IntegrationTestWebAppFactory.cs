@@ -17,8 +17,8 @@ public class IntegrationTestWebAppFactory : WebApplicationFactory<Program>, IAsy
         .WithPassword("employee-management")
         .WithStartupCallback(async (container, ct) =>
         {
-            var dllScript = await File.ReadAllTextAsync("Employees/employee-schema.sql", ct);
-            var employeesDataScript = await File.ReadAllTextAsync("Employees/employee-data.sql", ct);
+            var dllScript = await File.ReadAllTextAsync("Infrastructure/Data/employee-schema.sql", ct);
+            var employeesDataScript = await File.ReadAllTextAsync("Infrastructure/Data/employee-data.sql", ct);
 
             await container.ExecScriptAsync(dllScript);
             await container.ExecScriptAsync(employeesDataScript);
