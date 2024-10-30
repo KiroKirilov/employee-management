@@ -5,6 +5,8 @@ This project represents a simple implementation of a RESTful API for an employee
 - PUT /api/employees: Upserts an employee. If the employee's id is 0, it is inserted, otherwise it is updated.
 - DELETE /api/employees/{id}: Deletes the employee with the specified id. All their direct managed employees become root employees.
 
+**This solution took ~8 hours to build, working on it in small batches since Monday.**
+
 # Structure
 All the source code is located in the `src` folder. The solution itself has only one source code project called `EmployeeManagement`. The code in this project is structured in a fashion similar to Clean Architecture, with the folders `Api`, `Application`, `Domain`, and `Infrastructure` representing the different layers of the application. CQRS (with the `MediatR` package) is used to separate the read and write operations. 
 
@@ -14,9 +16,11 @@ All the source code is located in the `src` folder. The solution itself has only
 - The `Infrastructure` folder contains the data access code.
 
 # Running the API
-The project is configured to run with `docker-compose` which sets up the API and a PostgreSQL database. It can be ran with the `docker compose up --detach` command or by running the project in Visual Studio with the Docker Compose profile selected. By default the DB structure is not setup, so the API will return an error if you try to access it. To setup the DB structure for local dev, the `employee-schema.sql` and  `employee-data.sql` can be run against the database. The `employee-schema.sql` file creates the necessary tables and the `employee-data.sql` file inserts some sample data.
+The project is configured to run with `docker-compose` which sets up the API and a PostgreSQL database. It can be ran with the `docker compose up --detach` command or by running the project in Visual Studio with the Docker Compose profile selected. By default the DB structure is setup on startup. If running in development, some dummy data is also seeded. To setup the DB structure manually, the `Infrastructure/Data/employee-schema.sql` and  `Infrastructure/Data/employee-data.sql` can be run against the database. The `employee-schema.sql` file creates the necessary table and the `employee-data.sql` file inserts some sample data.
 
 The API can also be ran on its own by running the project in Visual Studio with the `EmployeeManagement` profile selected or with `dotnet run`.
+
+More information on the app settings that need to be setup can be found in the [App settings](#App-settings) section.
 
 # Testing
 The project has three test projects created and setup:
