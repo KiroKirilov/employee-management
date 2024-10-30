@@ -7,7 +7,10 @@ public static class EmployeeEndpointsSetup
     {
         var group = builder.MapGroup("employees").WithTags(TagName);
 
+        group.MapGet("", List.Handle).WithName(nameof(List));
         group.MapGet("{id:int}", GetById.Handle).WithName(nameof(GetById));
+        group.MapPut("", Upsert.Handle).WithName(nameof(Upsert));
+        group.MapDelete("{id:int}", Delete.Handle).WithName(nameof(Delete));
 
         return group;
     }

@@ -1,4 +1,5 @@
 using EmployeeManagement.Api.Endpoints.Employees;
+using EmployeeManagement.Api.Extensions;
 using EmployeeManagement.Application;
 using EmployeeManagement.Infrastructure;
 using EmployeeManagement.Presentation;
@@ -16,6 +17,9 @@ app.UseSwagger();
 app.UseSwaggerUI();
 
 app.UseHttpsRedirection();
+
+app.UseInvalidJsonHandling();
+app.UseCustomExceptionHandling();
 
 var apiGroup = app.MapGroup("api");
 apiGroup.MapEmployeeEndpoints();
